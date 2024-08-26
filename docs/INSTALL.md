@@ -3,8 +3,8 @@
 ### Requirements
 * Nvidia device with CUDA, [example for Ubuntu 20.04](https://linuxconfig.org/how-to-install-cuda-on-ubuntu-20-04-focal-fossa-linux)
 (if you have no nvidia device, delete [this line](https://github.com/MVIG-SJTU/AlphaPose/blob/master/setup.py#L211) from setup.py
-* Python 3.7+
-* Cython
+* Python 3.7+ (推荐用3.12.4)
+* Cython(推荐0.29.36)
 * PyTorch 1.11+, for users who want to use 1.5 < PyTorch < 1.11, please switch to the `pytorch<1.11` branch by:
   `git checkout "pytorch<1.11"`; for users who want to use PyTorch < 1.5, please switch to the `pytorch<1.5` branch by: `git checkout "pytorch<1.5"`
 * torchvision 0.12.0+
@@ -23,7 +23,7 @@ conda create -n alphapose python=3.7 -y
 conda activate alphapose
 
 # 2. Install PyTorch
-conda install pytorch torchvision torchaudio pytorch-cuda=11.3 -c pytorch -c nvidia 
+conda install pytorch torchvision torchaudio pytorch-cuda=11.3 -c pytorch -c nvidia(推荐conda install pytorch==2.3.1 torchvision==0.18.1 torchaudio==2.3.1 pytorch-cuda=12.1 -c pytorch -c nvidia 参考https://pytorch.org/get-started/previous-versions/ 其中cuda安装12.1版本)
 
 # 3. Get AlphaPose
 git clone https://github.com/MVIG-SJTU/AlphaPose.git
@@ -33,7 +33,7 @@ cd AlphaPose
 # 4. install
 export PATH=/usr/local/cuda/bin/:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64/:$LD_LIBRARY_PATH
-python -m pip install cython
+python -m pip install cython（推荐python -m pip install cython==0.29.36,参考https://github.com/MVIG-SJTU/AlphaPose/issues/1157）
 sudo apt-get install libyaml-dev
 ################Only For Ubuntu 18.04#################
 locale-gen C.UTF-8
